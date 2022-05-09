@@ -14,15 +14,4 @@ class BaseTabBarVC: UITabBarController,UITabBarControllerDelegate {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
-//    func tabBarController(_ tabBarCçntroller: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-////        if viewController is PlaceholderVC {
-////            let navVC = ExperienceEditorNavigationController(rootViewController: AddExperienceVC.instantiate(fromAppStoryboard: .Experience))
-////            navVC.modalPresentationStyle = .fullScreen
-////            self.present(navVC, animated: true)
-////                return false
-////            } else {
-////                return true
-////            }
-//    }
 }

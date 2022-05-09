@@ -47,7 +47,6 @@ class BaseVC: UIViewController {
     }
     
     // MARK: - Life Cycle
-    //===================
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
@@ -68,10 +67,8 @@ class BaseVC: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        if let touch = touches.first, let view = touch.view {
-            if view.isKind(of: UITextField.self) || view.isKind(of: UITextView.self) {
-                self.view.endEditing(true)
-            }
+        if let touch = touches.first, let view = touch.view, view.isKind(of: UITextField.self) || view.isKind(of: UITextView.self){
+        self.view.endEditing(true)
         }
     }
     
