@@ -81,33 +81,6 @@ struct Api {
             failureHandler(.init(code: 100, msg: "No Internet Connection"))
         }
     }
-//    /// Handles status code errors, convert errors, validation errors, expired token error
-//    static private func handleError(status: ResponseStatus, failureHandler: @escaping ErrorFailureCompletionBlock) {
-//        
-//        if status.code == 404 {
-//            let error = "Error URL Not Found: \(String(describing: status.msg))"
-//            print(error)
-//            failureHandler(.init(code: status.code, msg: error))
-//        } else {
-//            failureHandler(status)
-//        }
-//    }
-    
-    /// Handles status code errors, convert errors, validation errors, expired token error
-    static private func handleErrorNew(status: ResponseStatus, failureHandler: @escaping FailureCompletionBlock) {
-        
-        if status.code == 404 {
-            let error = "Error URL Not Found: \(String(describing: status.msg))"
-            print(error)
-            failureHandler(.init())
-           // failureHandler(.init(error.localized))
-            //            failureHandler(.init(code: status.code, msg: error))
-        } else {
-            failureHandler(status.msg)
-        }
-    }
-    
-    
     
     /// Parses response to the generic requested type
     static private func handleSuccessNew<T: Codable>(type: T.Type, response: DataResponse<Any, AFError>, successHandler: @escaping SuccessCompletionBlock<T>, failureHandler: @escaping ErrorFailureCompletionBlock) {
