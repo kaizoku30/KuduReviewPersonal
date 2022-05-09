@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Test PaymentVC-->
+        <scene sceneID="gEc-iv-XaH">
+            <objects>
+                <viewController storyboardIdentifier="TestPaymentVC" id="xOf-RR-WlU" customClass="TestPaymentVC" customModule="Kudu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ceU-qW-30h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWS-mT-dod" customClass="CardNumberInputView" customModule="Frames">
+                                <rect key="frame" x="16" y="112" width="382" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="ePR-vJ-cye"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Card number"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="4242"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUH-Ul-xnJ" customClass="ExpirationDateInputView" customModule="Frames">
+                                <rect key="frame" x="16" y="168" width="382" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="3RK-nq-mdt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Expiration date"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="06/2019"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cq-TZ-Gpc" customClass="CvvInputView" customModule="Frames">
+                                <rect key="frame" x="16" y="224" width="382" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="6BX-Y5-R2Q"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Cvv"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="100"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orp-bh-QGl">
+                                <rect key="frame" x="16" y="280" width="382" height="30"/>
+                                <state key="normal" title="Pay 1 Dollar"/>
+                                <connections>
+                                    <action selector="onTapPay:" destination="xOf-RR-WlU" eventType="touchUpInside" id="S2b-dy-cuD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MK7-Ia-uEE"/>
+                        <color key="backgroundColor" red="0.1333333333" green="0.16078431369999999" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4cq-TZ-Gpc" firstAttribute="leading" secondItem="MK7-Ia-uEE" secondAttribute="leading" constant="16" id="1bK-Lc-uVm"/>
+                            <constraint firstItem="MK7-Ia-uEE" firstAttribute="trailing" secondItem="DWS-mT-dod" secondAttribute="trailing" constant="16" id="BOf-vQ-auP"/>
+                            <constraint firstItem="orp-bh-QGl" firstAttribute="top" secondItem="4cq-TZ-Gpc" secondAttribute="bottom" constant="8" id="GUL-ls-XW8"/>
+                            <constraint firstItem="TUH-Ul-xnJ" firstAttribute="leading" secondItem="MK7-Ia-uEE" secondAttribute="leading" constant="16" id="GiX-OM-f0d"/>
+                            <constraint firstItem="DWS-mT-dod" firstAttribute="leading" secondItem="MK7-Ia-uEE" secondAttribute="leading" constant="16" id="ZZe-fl-CPD"/>
+                            <constraint firstItem="TUH-Ul-xnJ" firstAttribute="top" secondItem="DWS-mT-dod" secondAttribute="bottom" constant="8" id="eqN-Lb-BjR"/>
+                            <constraint firstItem="4cq-TZ-Gpc" firstAttribute="top" secondItem="TUH-Ul-xnJ" secondAttribute="bottom" constant="8" id="gmC-nx-t0X"/>
+                            <constraint firstItem="MK7-Ia-uEE" firstAttribute="trailing" secondItem="4cq-TZ-Gpc" secondAttribute="trailing" constant="16" id="hGe-9e-gnL"/>
+                            <constraint firstItem="DWS-mT-dod" firstAttribute="top" secondItem="MK7-Ia-uEE" secondAttribute="top" constant="68" id="nLU-CL-FXT"/>
+                            <constraint firstItem="MK7-Ia-uEE" firstAttribute="trailing" secondItem="orp-bh-QGl" secondAttribute="trailing" constant="16" id="qcE-q9-KcG"/>
+                            <constraint firstItem="orp-bh-QGl" firstAttribute="leading" secondItem="MK7-Ia-uEE" secondAttribute="leading" constant="16" id="ryZ-cp-Wjn"/>
+                            <constraint firstItem="MK7-Ia-uEE" firstAttribute="trailing" secondItem="TUH-Ul-xnJ" secondAttribute="trailing" constant="16" id="t82-xf-dyl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardNumberView" destination="DWS-mT-dod" id="Rpv-iU-GG7"/>
+                        <outlet property="cvvView" destination="4cq-TZ-Gpc" id="Jk7-gH-pFA"/>
+                        <outlet property="expirationDateView" destination="TUH-Ul-xnJ" id="WDQ-Dp-6IN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pP5-oZ-urE" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-848" y="81"/>
+        </scene>
+        <!--LaunchVC-->
+        <scene sceneID="Vab-1o-7mR">
+            <objects>
+                <viewController storyboardIdentifier="LaunchVC" id="HxJ-PK-Rpm" customClass="LaunchVC" customModule="Kudu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qN1-0u-8vr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk6-gF-egv">
+                                <rect key="frame" x="10" y="54" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4EB-YT-BcP"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstItem="gk6-gF-egv" firstAttribute="leading" secondItem="4EB-YT-BcP" secondAttribute="leading" constant="10" id="K5B-8x-Pk7"/>
+                            <constraint firstItem="gk6-gF-egv" firstAttribute="top" secondItem="4EB-YT-BcP" secondAttribute="top" constant="10" id="Wyp-Nk-V6I"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="testLabel" destination="gk6-gF-egv" id="PLG-OP-ipX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kz8-Y3-ipK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-164" y="80"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

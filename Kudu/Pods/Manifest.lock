@@ -1,0 +1,95 @@
+PODS:
+  - Alamofire (5.5.0)
+  - AWSCore (2.27.3)
+  - AWSS3 (2.27.3):
+    - AWSCore (= 2.27.3)
+  - CheckoutEventLoggerKit (1.1.1)
+  - CropViewController (2.6.1)
+  - Frames (3.5.2):
+    - CheckoutEventLoggerKit (= 1.1.1)
+    - PhoneNumberKit (= 3.3.3)
+  - GrowingTextView (0.7.2)
+  - IQKeyboardManagerSwift (6.5.9)
+  - Kingfisher (7.2.0)
+  - LanguageManager-iOS (1.2.5)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
+  - OTPFieldView (1.0.1)
+  - PhoneNumberKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.3)
+    - PhoneNumberKit/UIKit (= 3.3.3)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.3)
+  - PhoneNumberKit/UIKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore
+  - ReachabilitySwift (5.0.0)
+  - ShimmerSwift (2.1.1)
+  - SwiftyJSON (5.0.1)
+  - TLPhotoPicker (2.1.9)
+  - UICollectionViewLeftAlignedLayout (1.0.2)
+  - ZKCarousel (1.1.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - AWSS3
+  - CropViewController
+  - Frames
+  - GrowingTextView
+  - IQKeyboardManagerSwift
+  - Kingfisher
+  - LanguageManager-iOS
+  - NVActivityIndicatorView
+  - OTPFieldView
+  - ReachabilitySwift
+  - ShimmerSwift
+  - SwiftyJSON
+  - TLPhotoPicker
+  - UICollectionViewLeftAlignedLayout
+  - ZKCarousel
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AWSCore
+    - AWSS3
+    - CheckoutEventLoggerKit
+    - CropViewController
+    - Frames
+    - GrowingTextView
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - LanguageManager-iOS
+    - NVActivityIndicatorView
+    - OTPFieldView
+    - PhoneNumberKit
+    - ReachabilitySwift
+    - ShimmerSwift
+    - SwiftyJSON
+    - TLPhotoPicker
+    - UICollectionViewLeftAlignedLayout
+    - ZKCarousel
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  AWSCore: a05d729ef999da1c50d5a3af5e986a57fbcb42f2
+  AWSS3: 586a92d6745cb395f8e43ead9d7b9fdccd6a1ef4
+  CheckoutEventLoggerKit: 18f1afe34ff217c3624396f2c2b4d26db8e6c2d9
+  CropViewController: 58fb440f30dac788b129d2a1f24cffdcb102669c
+  Frames: 9090a075bd8fe0fc883e32e380cd09e41c9cc0bc
+  GrowingTextView: 876bf42005b5e4a4fd740597db12caaf41f0fe6c
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
+  LanguageManager-iOS: 049345fe4d1c5fbe22af93d438540917f4936359
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  OTPFieldView: 700a752fe62c41d1c4914c78aa500fb30d97c255
+  PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  ShimmerSwift: f7ed2daf9c246de8299dfd9e12c6ab465cba9842
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  TLPhotoPicker: 939c40eaad130b69f9571e61e021e8120fa76329
+  UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
+  ZKCarousel: e54940a77f4b635e650ea0361608db836a776feb
+
+PODFILE CHECKSUM: 136c06694b354cfc0c8fa80e444af0de79cf6daa
+
+COCOAPODS: 1.11.2
