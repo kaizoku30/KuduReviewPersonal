@@ -38,4 +38,5 @@ struct CommonStrings {
     static var apostroph_s: String { return "'s" }
     static var urlHttps: String { return "http://" }
     static var urlHttp: String { return "https://" }
+    static var predicateMatcher:String { return "SELF MATCHES %@"}
 }

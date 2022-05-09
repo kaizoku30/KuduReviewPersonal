@@ -17,7 +17,6 @@ class AppButton: UIButton {
     var isButtonHighlighted:Bool = false
     
     // MARK: Initializers
-    //=====================
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupSubviews()
@@ -29,17 +28,10 @@ class AppButton: UIButton {
     }
     
     // MARK: Life Cycle Functions
-    //==============================
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setupLayouts()
     }
-    
-    
-    
-
-    
-
 }
 
 extension AppButton

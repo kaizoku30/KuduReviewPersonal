@@ -154,21 +154,21 @@ extension String {
     
     func hasUperChar() -> Bool {
         let capitalLetterRegEx  = ".*[A-Z]+.*"
-        let textTest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        let textTest = NSPredicate(format:CommonStrings.predicateMatcher, capitalLetterRegEx)
         let result = textTest.evaluate(with: self)
         return result
     }
     
     func hasLowerChar() -> Bool {
         let smallLetterRegEx  = ".*[a-z]+.*"
-        let textTest = NSPredicate(format:"SELF MATCHES %@", smallLetterRegEx)
+        let textTest = NSPredicate(format:CommonStrings.predicateMatcher, smallLetterRegEx)
         let result = textTest.evaluate(with: self)
         return result
     }
     
     func hasNumbers() -> Bool {
         let smallLetterRegEx  = ".*[0-9]+.*"
-        let textTest = NSPredicate(format:"SELF MATCHES %@", smallLetterRegEx)
+        let textTest = NSPredicate(format:CommonStrings.predicateMatcher, smallLetterRegEx)
         let result = textTest.evaluate(with: self)
         return result
     }
@@ -326,17 +326,17 @@ extension String {
     func checkIfValid(_ validityExression: ValidityExression) -> Bool {
         
         if validityExression == .password {
-            if !NSPredicate(format: "SELF MATCHES %@", ValidityExression.capitalLetter.rawValue).evaluate(with: self) {
+            if !NSPredicate(format: CommonStrings.predicateMatcher, ValidityExression.capitalLetter.rawValue).evaluate(with: self) {
                 return false
             }
-            if !NSPredicate(format: "SELF MATCHES %@", ValidityExression.specialCharacter.rawValue).evaluate(with: self) {
+            if !NSPredicate(format: CommonStrings.predicateMatcher, ValidityExression.specialCharacter.rawValue).evaluate(with: self) {
                 return false
             }
             return true
             
         } else {
             let regEx = validityExression.rawValue
-            let test = NSPredicate(format: "SELF MATCHES %@", regEx)
+            let test = NSPredicate(format: CommonStrings.predicateMatcher, regEx)
             
             return test.evaluate(with: self)
         }
@@ -514,7 +514,7 @@ extension String {
     var isValidUrlByRegex: Bool {
         get {
             let regEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
-            let predicate = NSPredicate(format: "SELF MATCHES %@", argumentArray: [regEx])
+            let predicate = NSPredicate(format: CommonStrings.predicateMatcher, argumentArray: [regEx])
             let predicatedValue: Bool = predicate.evaluate(with: self)
             var isContainingAllUnicode: Bool = true
             /// Checking the non english characters in the link
@@ -530,7 +530,7 @@ extension String {
     var isValidPrice: Bool {
         get {
             let regEx = "^\\d{0,6}(\\.\\d{1,2})?$"
-            let predicate = NSPredicate(format: "SELF MATCHES %@", regEx)
+            let predicate = NSPredicate(format: CommonStrings.predicateMatcher, regEx)
             return predicate.evaluate(with: self)
         }
     }

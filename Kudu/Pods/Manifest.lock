@@ -23,7 +23,6 @@ PODS:
   - PhoneNumberKit/UIKit (3.3.3):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
-  - ShimmerSwift (2.1.1)
   - SwiftyJSON (5.0.1)
   - TLPhotoPicker (2.1.9)
   - UICollectionViewLeftAlignedLayout (1.0.2)
@@ -41,7 +40,6 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - OTPFieldView
   - ReachabilitySwift
-  - ShimmerSwift
   - SwiftyJSON
   - TLPhotoPicker
   - UICollectionViewLeftAlignedLayout
@@ -63,7 +61,6 @@ SPEC REPOS:
     - OTPFieldView
     - PhoneNumberKit
     - ReachabilitySwift
-    - ShimmerSwift
     - SwiftyJSON
     - TLPhotoPicker
     - UICollectionViewLeftAlignedLayout
@@ -84,12 +81,11 @@ SPEC CHECKSUMS:
   OTPFieldView: 700a752fe62c41d1c4914c78aa500fb30d97c255
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  ShimmerSwift: f7ed2daf9c246de8299dfd9e12c6ab465cba9842
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   TLPhotoPicker: 939c40eaad130b69f9571e61e021e8120fa76329
   UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
   ZKCarousel: e54940a77f4b635e650ea0361608db836a776feb
 
-PODFILE CHECKSUM: 136c06694b354cfc0c8fa80e444af0de79cf6daa
+PODFILE CHECKSUM: da37c34731c78522196a8ef94ae536f07d59bda6
 
 COCOAPODS: 1.11.2

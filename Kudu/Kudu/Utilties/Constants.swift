@@ -19,6 +19,10 @@ class Constants
         }
     }
     
+    struct CheckOutCredentials{
+        static let postApiURL = "https://api.sandbox.checkout.com/payments"
+    }
+    
     struct S3BucketCredentials{
         static let s3PoolApiKey = "us-east-1:ddd74fa1-9d1a-4370-af14-26980e40e7a2"
         static let s3BucketName = "app-development"

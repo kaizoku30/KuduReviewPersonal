@@ -12,7 +12,6 @@ target 'Kudu' do
   pod 'Kingfisher'
   pod 'OTPFieldView'
   pod 'NVActivityIndicatorView'
-  pod 'ShimmerSwift'
   pod 'UICollectionViewLeftAlignedLayout'
   pod 'GrowingTextView'
   pod 'TLPhotoPicker'

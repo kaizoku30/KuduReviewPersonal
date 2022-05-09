@@ -17,10 +17,12 @@ enum Endpoint {
     
     /// URLEncoding used for GET requests and JSONEncoding for POST and PUT requests
     var encoding:Alamofire.ParameterEncoding {
-        switch self.method {
-        case .get:
+        if self.method == .get
+        {
             return URLEncoding.default
-        default:
+        }
+        else
+        {
             return JSONEncoding.default
         }
     }
@@ -29,7 +31,7 @@ enum Endpoint {
     var path: String {
         switch self {
         case .payment:
-            return "https://api.sandbox.checkout.com/payments"
+            return Constants.CheckOutCredentials.postApiURL
         }
     }
     
@@ -48,7 +50,6 @@ enum Endpoint {
         case .payment:
             headers = [:]
             headers["authorization"] = "sk_test_146d56ed-4dcd-493a-9db2-866c924c0bba"
-            break
         }
         return HTTPHeaders(headers)
     }

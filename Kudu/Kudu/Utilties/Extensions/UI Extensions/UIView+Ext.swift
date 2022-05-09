@@ -957,7 +957,7 @@ public extension UIView {
             name = nibName
         } else {
             // Most nibs are demangled by practice, if not, just declare string explicitly
-            name = nibName
+            name = self.nibName
         }
         if let nibViews = Bundle.main.loadNibNamed(name, owner: nil, options: nil) {
             for v in nibViews {
