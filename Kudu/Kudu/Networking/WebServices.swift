@@ -12,7 +12,7 @@ final class WebServices
     final class PaymentTestEndPoints {
         static func payADollar(cardToken:String,success: @escaping SuccessCompletionBlock<EmptyDataResponse>, failure: @escaping ErrorFailureCompletionBlock)
         {
-            Api.requestNew(endpoint: .payment(cardToken: cardToken), type: EmptyDataResponse.self, successHandler: success, failureHandler: failure)
+            Api.requestNew(endpoint: .payment(cardToken: cardToken), successHandler: success, failureHandler: failure)
         }
     }
 }

@@ -38,7 +38,7 @@ struct Api {
     
     static var session: Session?
     
-    static func requestNew<T: Codable>(endpoint: Endpoint, type: T.Type, successHandler: @escaping SuccessCompletionBlock<T>, failureHandler: @escaping ErrorFailureCompletionBlock) {
+    static func requestNew<T: Codable>(endpoint: Endpoint, successHandler: @escaping SuccessCompletionBlock<T>, failureHandler: @escaping ErrorFailureCompletionBlock) {
         if isConnectedToNetwork() {
             guard let url = URL(string: endpoint.path) else {
                 failureHandler(.init(msg: "Error in request url"))
