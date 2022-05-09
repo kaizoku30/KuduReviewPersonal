@@ -74,7 +74,7 @@ struct Api {
                         return
                         
                     case .success:
-                        handleSuccessNew(type: type, response: response, successHandler: successHandler, failureHandler: failureHandler)
+                        handleSuccessNew(response: response, successHandler: successHandler, failureHandler: failureHandler)
                     }
                 }
         }else {
@@ -83,7 +83,7 @@ struct Api {
     }
     
     /// Parses response to the generic requested type
-    static private func handleSuccessNew<T: Codable>(type: T.Type, response: DataResponse<Any, AFError>, successHandler: @escaping SuccessCompletionBlock<T>, failureHandler: @escaping ErrorFailureCompletionBlock) {
+    static private func handleSuccessNew<T: Codable>(response: DataResponse<Any, AFError>, successHandler: @escaping SuccessCompletionBlock<T>, failureHandler: @escaping ErrorFailureCompletionBlock) {
         if let value = response.data {
             do {
                 let emptyDataResponse = try JSONDecoder().decode(EmptyDataResponse.self, from: value)
