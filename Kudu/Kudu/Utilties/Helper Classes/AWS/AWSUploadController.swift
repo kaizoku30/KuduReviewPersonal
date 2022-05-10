@@ -11,7 +11,9 @@ typealias progressBlock = (_ progress: Double) -> Void //2
 typealias completionBlock = (_ response: String?, _ error: Error?) -> Void //3
 
 class AWSUploadController {
-   
+    private static let requestParameter = "x-amz-acl"
+    private static let publicRead = "public-read"
+    
     static func uploadTheVideoToAWS(videoUrl: URL,progress: progressBlock?, completion: completionBlock?) {
             encodeVideo(videoUrl: videoUrl) { (url) in
                 guard let url = url else{
@@ -36,8 +38,8 @@ class AWSUploadController {
         }
         
         expression.progressBlock = progressBlock
-        expression.setValue("public-read", forRequestParameter: "x-amz-acl")
-        expression.setValue("public-read", forRequestHeader: "x-amz-acl" )
+        expression.setValue(self.publicRead, forRequestParameter: self.requestParameter)
+        expression.setValue(self.publicRead, forRequestHeader: self.requestParameter)
         
         let completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock = { (task, error) -> Void in
             DispatchQueue.main.async(execute: {
@@ -99,8 +101,8 @@ class AWSUploadController {
         }
         
         expression.progressBlock = progressBlock
-        expression.setValue("public-read", forRequestParameter: "x-amz-acl")
-        expression.setValue("public-read", forRequestHeader: "x-amz-acl" )
+        expression.setValue(self.publicRead, forRequestParameter: self.requestParameter)
+        expression.setValue(self.publicRead, forRequestHeader: self.requestParameter)
         
         let completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock = { (task, error) -> Void in
             DispatchQueue.main.async(execute: {
