@@ -592,8 +592,9 @@ extension String {
 
 extension String {
     var isValidURL: Bool {
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        if let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
+        let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        if detector.isNil { return false }
+        if let match = detector!.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
             // it is a link, if the match covers the whole string
             return match.range.length == self.utf16.count
         } else {
@@ -606,10 +607,11 @@ extension String {
 extension String {
 
     private func matches(pattern: String) -> Bool {
-        let regex = try! NSRegularExpression(
+        let regex = try? NSRegularExpression(
             pattern: pattern,
             options: [.caseInsensitive])
-        return regex.firstMatch(
+        if regex.isNil { return false }
+        return regex!.firstMatch(
             in: self,
             options: [],
             range: NSRange(location: 0, length: utf16.count)) != nil

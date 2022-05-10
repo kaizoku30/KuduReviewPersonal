@@ -13,10 +13,6 @@ enum AppTextFieldType {
     case userName
     case password
     case name
-    case locationName
-    case elasticSearch
-    case listName
-    case userNameEmail
 }
 
 enum AppTextFieldUIType {
@@ -30,20 +26,21 @@ class AppTextFieldView: UIView {
     @IBOutlet weak var txtFieldBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtFieldTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtFieldLeftConstraint: NSLayoutConstraint!
-    
     @IBOutlet var mainContentView: UIView!
     @IBOutlet weak var txtField: UITextField!
     @IBOutlet weak var txtFieldClearBtn: AppButton!
     @IBOutlet weak var txtFieldShowPasswordBtn: AppButton!
+    
     var currentText:String {
         txtField.text ?? ""
     }
+    
     var placeholderText:String {
         didSet {
             txtField.placeholder = placeholderText
         }
     }
-   // var textFieldDidBeginEditing:(()->())?
+
     var textFieldClearBtnPressed:(()->())?
     var textFieldDidChangeCharacters:((String?)->())?
     var textFieldFinishedEditing:((String?)->())?
@@ -79,7 +76,7 @@ class AppTextFieldView: UIView {
                 return CommonValidation.isValidPassword(currentText)
             case .userName:
                 return CommonValidation.isValidUsername(currentText)
-            case .name,.locationName,.listName,.elasticSearch,.userNameEmail:
+            case .name:
                 return true
             }
         }
@@ -166,18 +163,6 @@ extension AppTextFieldView
         case .name:
          //   txtField.placeholder = LS.Placeholder.name
             txtField.keyboardType = .alphabet
-        case .locationName:
-          //  txtField.placeholder = LS.Placeholder.searchLocation
-            txtField.keyboardType = .asciiCapable
-        case .elasticSearch:
-            txtField.placeholder = "Type to search..."
-            txtField.keyboardType = .asciiCapable
-        case .listName:
-            txtField.placeholder = "Listname"
-            txtField.keyboardType = .asciiCapable
-        case .userNameEmail:
-            txtField.placeholder = "Username/Email"
-            txtField.keyboardType = .asciiCapable
         }
         switch textFieldUI
         {
@@ -206,9 +191,9 @@ extension AppTextFieldView:UITextFieldDelegate
     @objc func textFieldDidChange(_ textField: UITextField) {
         switch textFieldType
         {
-        case .email,.userNameEmail:
+        case .email:
             textField.text = textField.text?.lowercased()
-        case .name,.locationName,.listName,.elasticSearch:
+        case .name:
             if currentText.contains(".")
             {
                 textField.text = currentText.replacingOccurrences(of: ".", with: "")
@@ -228,7 +213,7 @@ extension AppTextFieldView:UITextFieldDelegate
         CommonFunctions.hideToast()
         switch textFieldType
         {
-        case .email,.name,.userName,.locationName,.elasticSearch,.listName,.userNameEmail:
+        case .email,.name,.userName:
             txtFieldClearBtn.isHidden = false
         case .password:
             break
@@ -244,50 +229,8 @@ extension AppTextFieldView:UITextFieldDelegate
         {
         case .email:
             return string != CommonStrings.whiteSpace && !newString.contains(CommonStrings.whiteSpace) && !string.isEmojiString()
-        case .userNameEmail:
-            let alphaNumericCharacter = CharacterSet.alphanumerics
-            let specialCharsAllows = CharacterSet(charactersIn: "._@")
-            let allAllowedUsernameChars = alphaNumericCharacter.union(specialCharsAllows)
-            let enteredCharacterSet = CharacterSet(charactersIn: newString)
-            if !enteredCharacterSet.isSubset(of: allAllowedUsernameChars)
-            {
-                return false
-            }
-            if string == CommonStrings.whiteSpace || newString.contains(CommonStrings.whiteSpace) || string.isEmojiString()
-            {
-                return false
-            }
-            return true
         case .userName:
-            let alphaNumericCharacter = CharacterSet.alphanumerics
-            let specialCharsAllows = CharacterSet(charactersIn: "._")
-            let allAllowedUsernameChars = alphaNumericCharacter.union(specialCharsAllows)
-            let enteredCharacterSet = CharacterSet(charactersIn: newString)
-            if !enteredCharacterSet.isSubset(of: allAllowedUsernameChars)
-            {
-                return false
-            }
-            if newString.count > 15 || string == CommonStrings.whiteSpace || newString.contains(CommonStrings.whiteSpace) || string.isEmojiString()
-            {
-                return false
-            }
-            return true
-        case .listName:
-            let lastText = textField.text
-            let lastCharacter = lastText?.last
-            if lastCharacter ?? Character("t") == " " && text == " "
-            {
-                return false
-            }
-            if text == "\n" || textField.text?.count == 75
-            {
-                return false
-            }
-            if CharacterSet.init(charactersIn: string).isSubset(of: CharacterSet.whitespaces)
-            {
-                return true
-            }
-            return true
+            return self.validateUserNameTextField(newString, string)
         case .password:
             if newString.count > 16 || string == CommonStrings.whiteSpace || newString.contains(CommonStrings.whiteSpace) || string.isEmojiString()
             {
@@ -295,71 +238,48 @@ extension AppTextFieldView:UITextFieldDelegate
             }
             return true
         case .name:
-            let alphabetSet = CharacterSet.letters
-            let allowedSet = alphabetSet.union(CharacterSet(charactersIn: CommonStrings.whiteSpace))
-            let enteredSet = CharacterSet(charactersIn: newString)
-            
-            if currentText == CommonStrings.emptyString && string == CommonStrings.whiteSpace
-            {
-                return false
-            }
-            
-            if newString.count > 20 || (string == CommonStrings.whiteSpace && lastEnteredCharacter == CommonStrings.whiteSpace) || string.isEmojiString()
-            {
-                return false
-            }
-            if !enteredSet.isSubset(of: allowedSet)
-            {
-                return false
-            }
-            
-            lastEnteredCharacter = string
-            return true
-        case .locationName:
-            let alphabetSet = CharacterSet.letters
-            let allowedSet = alphabetSet.union(CharacterSet(charactersIn: CommonStrings.whiteSpace)).union(CharacterSet.decimalDigits)
-            let enteredSet = CharacterSet(charactersIn: newString)
-            
-            if currentText == CommonStrings.emptyString && string == CommonStrings.whiteSpace
-            {
-                return false
-            }
-            
-            if newString.count > 30 || (string == CommonStrings.whiteSpace && lastEnteredCharacter == CommonStrings.whiteSpace) || string.isEmojiString()
-            {
-                return false
-            }
-            if !enteredSet.isSubset(of: allowedSet)
-            {
-                return false
-            }
-            
-            lastEnteredCharacter = string
-            return true
-        case .elasticSearch:
-            let alphabetSet = CharacterSet.letters
-            let allowedSet = alphabetSet.union(CharacterSet(charactersIn: CommonStrings.whiteSpace)).union(CharacterSet.decimalDigits)
-            let enteredSet = CharacterSet(charactersIn: newString)
-            
-            if currentText == CommonStrings.emptyString && string == CommonStrings.whiteSpace
-            {
-                return false
-            }
-            
-            if newString.count > 50 || (string == CommonStrings.whiteSpace && lastEnteredCharacter == CommonStrings.whiteSpace) || string.isEmojiString()
-            {
-                return false
-            }
-            if !enteredSet.isSubset(of: allowedSet)
-            {
-                return false
-            }
-            
-            lastEnteredCharacter = string
-            return true
+            return self.validateNameTextField(newString, string)
+        }
+    }
+    
+    private func validateUserNameTextField(_ newString:String,_ string:String)->Bool
+    {
+        let alphaNumericCharacter = CharacterSet.alphanumerics
+        let specialCharsAllows = CharacterSet(charactersIn: "._")
+        let allAllowedUsernameChars = alphaNumericCharacter.union(specialCharsAllows)
+        let enteredCharacterSet = CharacterSet(charactersIn: newString)
+        if !enteredCharacterSet.isSubset(of: allAllowedUsernameChars)
+        {
+            return false
+        }
+        if newString.count > 15 || string == CommonStrings.whiteSpace || newString.contains(CommonStrings.whiteSpace) || string.isEmojiString()
+        {
+            return false
+        }
+        return true
+    }
+    
+    private func validateNameTextField(_ newString:String,_ string:String)->Bool
+    {
+        let alphabetSet = CharacterSet.letters
+        let allowedSet = alphabetSet.union(CharacterSet(charactersIn: CommonStrings.whiteSpace))
+        let enteredSet = CharacterSet(charactersIn: newString)
+        
+        if currentText == CommonStrings.emptyString && string == CommonStrings.whiteSpace
+        {
+            return false
         }
         
-       
+        if newString.count > 20 || (string == CommonStrings.whiteSpace && lastEnteredCharacter == CommonStrings.whiteSpace) || string.isEmojiString()
+        {
+            return false
+        }
+        if !enteredSet.isSubset(of: allowedSet)
+        {
+            return false
+        }
+        lastEnteredCharacter = string
+        return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -368,8 +288,8 @@ extension AppTextFieldView:UITextFieldDelegate
         {
         case .email:
             debugPrint("Valid email :\(CommonValidation.isValidEmail(textField.text ?? ""))")
-        case .userName,.password,.name,.locationName,.listName,.elasticSearch,.userNameEmail:
-            break
+        case .userName,.password,.name:
+            debugPrint("Valid?")
         }
         textFieldFinishedEditing?(textField.text)
     }
@@ -399,10 +319,10 @@ extension AppTextFieldView
         switch txtField.isSecureTextEntry
         {
         case true:
-            break
+            debugPrint("show password")
            // txtFieldShowPasswordBtn.setImageForAllMode(image: AppImages.PasswordTF.showPassword)
         case false:
-            break
+            debugPrint("hide password")
             //txtFieldShowPasswordBtn.setImageForAllMode(image: AppImages.PasswordTF.hidePassword)
         }
     }
